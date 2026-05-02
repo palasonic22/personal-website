@@ -1,31 +1,34 @@
 @AGENTS.md
 
-# Project: Personal Website (ezekiellee.com)
+# Project: Ezekiel Lee — Personal Website (ezekiellee.com)
 
 ## What's Built
 - **Next.js 16** App Router + **Tailwind CSS 4** + **TypeScript**
-- **MDX** for content (`@next/mdx`, `gray-matter`) — writing and projects stored as `.mdx` files
+- **MDX** for content (`gray-matter`, `react-markdown`) — writing and projects stored as `.mdx` files
 - **next-themes** for light/dark mode (light default, toggle persisted)
+- Single-page layout with client-side tab switching, modeled after cleonwong.com
 - Dev server runs on `localhost:3000`
 
 ## Architecture Decisions
 - **No shadcn/ui** — layout is ultra-minimal, plain Tailwind is sufficient
-- **No /built route** — projects live as a section on the About page (following cleonwong.com pattern)
-- **react-markdown** for rendering MDX content in writing detail pages
-- **Scroll-triggered header blur** — fixed header, transparent at top, frosted glass on scroll
+- **No separate routes for main pages** — /about, /writing, /connect, /favorites all render as tabs on `/`
+- **Only `/writing/[slug]` has a separate URL** — individual essays navigate away from the single page
+- **No frosted glass blur on header** — tested but reverted due to visible edge artifacts
 - **Color tokens**: `#221A06` (dark text), `#FFFFFF` (light bg), `#376D49` (forest green accent), `#1a1408` (dark bg)
 - **Font**: Geist (Next.js default sans-serif)
+- **Sticky header**: only the top row (avatar + name + toggle + button) is sticky; intro, nav, and content scroll behind it
+- **Body text capped at 14px** everywhere — no `text-base` or larger
+- **Container width**: `max-w-2xl` centered
+- **Default landing tab**: Writing (not About)
 
 ## File Structure (key paths)
-- `src/app/layout.tsx` — Root layout with ThemeProvider, Header, Footer
-- `src/app/page.tsx` — Home: hero, tools, writing preview
-- `src/app/writing/page.tsx` — Writing index (date + title list)
-- `src/app/writing/[slug]/page.tsx` — Individual writing page
-- `src/app/about/page.tsx` — Bio + timeline + projects section
-- `src/app/connect/page.tsx` — Social/contact links
-- `src/components/header.tsx` — Nav with blur-on-scroll
-- `src/components/theme-toggle.tsx` — Dark/light switcher
-- `src/lib/content.ts` — MDX parsing, sorting, frontmatter types
+- `src/app/page.tsx` — Server component: fetches MDX data, renders TabsClient
+- `src/app/layout.tsx` — Minimal root layout with ThemeProvider
+- `src/app/writing/[slug]/page.tsx` — Individual writing page with full header
+- `src/app/not-found.tsx` — 404 page
+- `src/components/site-header.tsx` — SiteHeader (sticky), Intro (Me in 10 seconds + Current AI), TabNav
+- `src/components/tabs-client.tsx` — Client component: tab state + About/Writing/Favourites/Connect tab content
+- `src/lib/content.ts` — MDX parsing, sorting, frontmatter types (server-only, uses `fs`)
 - `content/writing/` — Writing MDX files
 - `content/projects/` — Project MDX files
 
@@ -37,9 +40,11 @@
 - All pages built and rendering
 - MDX content layer working (add new .mdx → appears on index)
 - Dark/light mode toggle with persistence
-- Scroll blur header effect
-- Mobile responsive (max-w-2xl container)
-- 404 page
+- Single-page tab switching (no routing between tabs)
+- Sticky header with avatar + name + toggle + "Get in touch"
+- Writing detail pages have full header, aligned with home page width
+- Clean minimal aesthetic, 14px body text
+- README and CLAUDE.md with context
 
 ## What's Next / Needs Work
 - **Real content** — replace placeholder MDX with actual writing and project details
@@ -48,3 +53,6 @@
 - **Design polish** — fine-tune colors, spacing, fonts to match taste
 - **SEO** — Open Graph metadata, sitemap.xml, robots.txt, RSS feed
 - **Deploy** — connect to Vercel, set up GitHub repo
+
+## Reference Design
+- Modeled after cleonwong.com — wide layout, lots of whitespace, large readable type, nav tabs with underline, section labels uppercase muted grey

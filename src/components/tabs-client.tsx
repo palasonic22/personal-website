@@ -7,7 +7,7 @@ import type { Frontmatter } from '@/lib/content'
 type TabId = 'about' | 'writing' | 'favorites' | 'connect'
 
 export function TabsClient({ writings, projects }: { writings: Frontmatter[]; projects: Frontmatter[] }) {
-  const [activeTab, setActiveTab] = useState<TabId>('about')
+  const [activeTab, setActiveTab] = useState<TabId>('writing')
 
   return (
     <>
@@ -115,44 +115,36 @@ function formatDate(dateStr: string) {
   })
 }
 
+const favorites = [
+  { name: 'Apple', url: 'https://apple.com', why: "Do one thing well, don't apologize for it." },
+  { name: 'Muji', url: 'https://muji.com', why: 'No-brand design that feels like a deep breath.' },
+  { name: 'Aesop', url: 'https://aesop.com', why: 'Sensory experience that turns routine into ritual.' },
+  { name: 'Leica', url: 'https://leica-camera.com', why: 'Mechanical precision meets obsessive craftsmanship.' },
+  { name: 'Patagonia', url: 'https://patagonia.com', why: 'Activism baked into the product, not bolted on.' },
+  { name: 'Linear', url: 'https://linear.app', why: "The most thoughtful software interface I've ever used." },
+  { name: 'Blade Runner 2049', url: 'https://imdb.com/title/tt1856101', why: 'Silence as narrative, patience as spectacle.' },
+  { name: 'The Social Network', url: 'https://imdb.com/title/tt1285016', why: 'Sorkin making ambition sound like music.' },
+  { name: 'Parasite', url: 'https://imdb.com/title/tt6751668', why: 'Every floor is a different universe.' },
+]
+
 function FavoritesTab() {
   return (
-    <div className="space-y-10">
-      <section>
-        <h2 className="text-xs uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          Brands
-        </h2>
-        <p className="text-[14px] leading-relaxed">
-          Apple, Muji, Aesop, Leica, Patagonia, Braun. Brands that do one thing well and don't apologize for it.
-        </p>
-      </section>
-
-      <section>
-        <h2 className="text-xs uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          People I follow
-        </h2>
-        <p className="text-[14px] leading-relaxed">
-          Paul Graham, Lenny Rachitsky, Julian Shapiro, James Clear. People who think clearly in public.
-        </p>
-      </section>
-
-      <section>
-        <h2 className="text-xs uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          Things I use
-        </h2>
-        <p className="text-[14px] leading-relaxed">
-          MacBook Air, iPhone, Notion, Linear, Figma, VS Code. Simple tools, minimal setup.
-        </p>
-      </section>
-
-      <section>
-        <h2 className="text-xs uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          Films
-        </h2>
-        <p className="text-[14px] leading-relaxed">
-          2001: A Space Odyssey, Blade Runner 2049, The Social Network, Ex Machina, Parasite. Films about building, systems, and the quiet violence of ambition.
-        </p>
-      </section>
+    <div className="space-y-3">
+      {favorites.map((item) => (
+        <div key={item.name} className="flex items-baseline justify-between gap-4">
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium hover:underline underline-offset-4"
+          >
+            {item.name}
+          </a>
+          <span className="text-zinc-400 dark:text-zinc-500 text-[14px] text-right shrink-0 ml-4">
+            {item.why}
+          </span>
+        </div>
+      ))}
     </div>
   )
 }

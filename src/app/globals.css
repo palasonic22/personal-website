@@ -94,3 +94,54 @@ body {
   border-top: 1px solid rgba(128, 128, 128, 0.2);
   margin: 2em 0;
 }
+
+/* hit-area: expand clickable zones without affecting layout */
+.hit-area {
+  position: relative;
+}
+
+.hit-area::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.hit-area-1::after { inset: -4px; }
+.hit-area-2::after { inset: -8px; }
+.hit-area-3::after { inset: -12px; }
+.hit-area-4::after { inset: -16px; }
+.hit-area-5::after { inset: -20px; }
+.hit-area-6::after { inset: -24px; }
+
+.hit-area-t-1::after { top: -4px; }
+.hit-area-t-2::after { top: -8px; }
+.hit-area-t-3::after { top: -12px; }
+.hit-area-t-4::after { top: -16px; }
+.hit-area-t-5::after { top: -20px; }
+.hit-area-t-6::after { top: -24px; }
+
+.hit-area-b-1::after { bottom: -4px; }
+.hit-area-b-2::after { bottom: -8px; }
+.hit-area-b-3::after { bottom: -12px; }
+.hit-area-b-4::after { bottom: -16px; }
+.hit-area-b-5::after { bottom: -20px; }
+.hit-area-b-6::after { bottom: -24px; }
+
+.hit-area-l-1::after { left: -4px; }
+.hit-area-l-2::after { left: -8px; }
+.hit-area-l-3::after { left: -12px; }
+.hit-area-l-4::after { left: -16px; }
+.hit-area-l-5::after { left: -20px; }
+.hit-area-l-6::after { left: -24px; }
+
+.hit-area-r-1::after { right: -4px; }
+.hit-area-r-2::after { right: -8px; }
+.hit-area-r-3::after { right: -12px; }
+.hit-area-r-4::after { right: -16px; }
+.hit-area-r-5::after { right: -20px; }
+.hit-area-r-6::after { right: -24px; }
+
+.hit-area-debug::after {
+  outline: 1px solid red;
+  outline-style: dashed;
+}

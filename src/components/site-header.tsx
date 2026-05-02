@@ -46,7 +46,7 @@ function ThemeToggle() {
 
   // Show placeholder during SSR to prevent layout shift
   if (!mounted) {
-    return <button className="p-1.5 rounded-full" aria-label="Toggle theme" disabled />
+    return <button className="hit-area hit-area-3 p-1.5 rounded-full" aria-label="Toggle theme" disabled />
   }
 
   const isDark = resolvedTheme === 'dark'
@@ -54,7 +54,7 @@ function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="p-1.5 rounded-full text-foreground hover:bg-foreground hover:text-background dark:hover:bg-zinc-800 dark:hover:text-foreground transition-all duration-300"
+      className="hit-area hit-area-3 p-1.5 rounded-full text-foreground hover:bg-foreground hover:text-background dark:hover:bg-zinc-800 dark:hover:text-foreground transition-all duration-300"
       aria-label="Toggle theme"
     >
       {isDark ? (
@@ -113,7 +113,7 @@ export function TabNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChan
           <button
             key={item.id}
             onClick={() => onTabChange(item.id)}
-            className={`pb-2 text-sm transition-colors duration-200 ${
+            className={`hit-area hit-area-y-2 pb-2 text-sm transition-colors duration-200 ${
               activeTab === item.id
                 ? 'text-foreground border-b-[3px] border-foreground -mb-px'
                 : 'text-zinc-400 dark:text-zinc-500 hover:text-foreground'

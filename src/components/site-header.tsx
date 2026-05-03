@@ -1,12 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
 
 const navItems = [
+  { id: 'writing' as const, label: 'Thoughts' },
   { id: 'about' as const, label: 'About' },
-  { id: 'writing' as const, label: 'Writing' },
   { id: 'favorites' as const, label: 'Favourites' },
   { id: 'connect' as const, label: 'Connect' },
 ]
@@ -16,11 +17,17 @@ type TabId = (typeof navItems)[number]['id']
 export function SiteHeader() {
   return (
     <header className="w-full sticky top-0 z-50 bg-background py-6 flex items-center">
-      <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center text-sm font-medium shrink-0">
-          E
-        </div>
-        <Link href="/" className="font-medium text-base hover:opacity-70 transition-opacity">
+      <div className="flex items-center gap-[10px]">
+        <Image
+          src="/pfp.png"
+          alt="Ezekiel Lee"
+          width={48}
+          height={48}
+          className="rounded-full shrink-0 pointer-events-none select-none"
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
+        />
+        <Link href="/" className="hit-area hit-area-3 font-medium text-[17px] hover:opacity-70 transition-opacity">
           Ezekiel Lee
         </Link>
       </div>
@@ -29,7 +36,7 @@ export function SiteHeader() {
         <ThemeToggle />
         <Link
           href="mailto:hello@ezekiellee.com"
-          className="px-4 py-1.5 border border-zinc-300 dark:border-zinc-600 rounded-full text-[13px] hover:bg-foreground hover:text-background transition-all duration-300"
+          className="hit-area hit-area-3 px-4 py-1.5 border border-zinc-300 dark:border-zinc-600 rounded-full text-[13px] hover:bg-foreground hover:text-background transition-all duration-300"
         >
           Get in touch
         </Link>
@@ -86,9 +93,8 @@ export function Intro() {
           Me in 10 seconds
         </h2>
         <p className="text-[14px] leading-relaxed">
-          I build products from zero — with product thinking, growth instincts, and taste.
-          Spent the last few years in fintech and crypto, working on payments and growth.
-          Now building small products, writing, and experimenting with AI tools.
+          I build and ship products from zero. Spent the last 6 years in crypto and startups across product and growth.
+          Now building small tools and AI workflows to help companies move faster. Currently living in Singapore.
         </p>
       </section>
 
@@ -113,7 +119,7 @@ export function TabNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChan
           <button
             key={item.id}
             onClick={() => onTabChange(item.id)}
-            className={`hit-area hit-area-y-2 pb-2 text-sm transition-colors duration-200 ${
+            className={`hit-area hit-area-3 pb-2 text-sm transition-colors duration-200 ${
               activeTab === item.id
                 ? 'text-foreground border-b-[3px] border-foreground -mb-px'
                 : 'text-zinc-400 dark:text-zinc-500 hover:text-foreground'

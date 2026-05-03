@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { SiteHeader, Intro, TabNav } from '@/components/site-header'
+import { Footer } from '@/components/footer'
 import type { Frontmatter } from '@/lib/content'
 
 type TabId = 'about' | 'writing' | 'favorites' | 'connect'
@@ -20,22 +22,25 @@ export function TabsClient({ writings, projects }: { writings: Frontmatter[]; pr
         {activeTab === 'favorites' && <FavoritesTab />}
         {activeTab === 'connect' && <ConnectTab />}
       </div>
+      <Footer />
     </>
   )
 }
 
 function AboutTab({ projects }: { projects: Frontmatter[] }) {
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
+      <Image
+        src="/about.png"
+        alt="About"
+        width={576}
+        height={150}
+        className="w-full h-[150px] object-cover object-bottom rounded-lg"
+      />
       <section>
         <p className="text-[14px] leading-relaxed mb-4">
-          I'm a product builder based in Singapore. I work at the intersection of product thinking,
-          growth, and design — shipping things people actually use.
-        </p>
-        <p className="text-[14px] leading-relaxed">
-          Spent the last few years in fintech and crypto, working on payments infrastructure and
-          growth at scale. Now building small products independently, writing in public, and
-          exploring AI workflow automation.
+          I build and ship products from zero. Spent the last 6 years in crypto and startups across product and growth.
+          Now building small tools and AI workflows to help companies move faster. Currently living in Singapore.
         </p>
       </section>
 
@@ -84,7 +89,15 @@ function AboutTab({ projects }: { projects: Frontmatter[] }) {
 
 function WritingTab({ writings }: { writings: Frontmatter[] }) {
   return (
-    <div className="space-y-3">
+    <div className="space-y-6">
+      <Image
+        src="/writing.png"
+        alt="Writing"
+        width={576}
+        height={150}
+        className="w-full h-[150px] object-cover object-top rounded-lg"
+      />
+      <div className="space-y-3">
       {writings.map((post) => (
         <a
           key={post.slug}
@@ -102,6 +115,7 @@ function WritingTab({ writings }: { writings: Frontmatter[] }) {
       {writings.length === 0 && (
         <p className="text-zinc-400 dark:text-zinc-500">No writing yet.</p>
       )}
+      </div>
     </div>
   )
 }
@@ -129,7 +143,15 @@ const favorites = [
 
 function FavoritesTab() {
   return (
-    <div className="space-y-3">
+    <div className="space-y-6">
+      <Image
+        src="/favourites.png"
+        alt="Favourites"
+        width={576}
+        height={150}
+        className="w-full h-[150px] object-cover object-top rounded-lg"
+      />
+      <div className="space-y-3">
       {favorites.map((item) => (
         <div key={item.name} className="flex items-baseline justify-between gap-4">
           <a
@@ -145,13 +167,21 @@ function FavoritesTab() {
           </span>
         </div>
       ))}
+      </div>
     </div>
   )
 }
 
 function ConnectTab() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      <Image
+        src="/connect.png"
+        alt="Connect"
+        width={576}
+        height={150}
+        className="w-full h-[150px] object-cover object-top rounded-lg"
+      />
       <p className="text-[14px] leading-relaxed">
         I'm always open to interesting conversations. Reach out if you want to talk products,
         building, or just say hi.

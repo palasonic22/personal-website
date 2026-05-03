@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import type { MDXComponents } from 'mdx/types'
+
+type MDXComponents = Record<string, React.ComponentType<any>>
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

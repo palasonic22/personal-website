@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ezekiel Lee — Writing</title>
+    <link>https://ezekiellee.com</link>
+    <description>Writing on product building, growth, and shipping things that matter.</description>
+    <language>en-us</language>
+    <ttl>60</ttl>
+    <atom:link href="https://ezekiellee.com/feed.xml" rel="self" type="application/rss+xml" />
+    <generator>Next.js</generator>
+    <managingEditor>elyfstyle@gmail.com (Ezekiel Lee)</managingEditor>
+    <webMaster>elyfstyle@gmail.com (Ezekiel Lee)</webMaster>
+    <lastBuildDate>Fri, 02 May 2026 00:00:00 GMT</lastBuildDate>
+  </channel>
+</rss>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import ReactMarkdown from 'react-markdown'
 import { SiteHeader } from '@/components/site-header'
+import { Footer } from '@/components/footer'
 
 export function generateStaticParams() {
   const posts = getSortedWriting()
@@ -30,27 +31,30 @@ export default async function WritingPost({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-12">
-      <SiteHeader />
-      <article>
-        <div className="mb-8">
-          <h1 className="text-base font-semibold leading-snug mb-2">
-            {post.frontmatter.title}
-          </h1>
-          <div className="text-zinc-400 dark:text-zinc-500 text-sm">
-            {formatDate(post.frontmatter.date)}
+    <>
+      <div className="w-full max-w-xl mx-auto px-4 py-12">
+        <SiteHeader />
+        <article>
+          <div className="mb-8">
+            <h1 className="text-base font-semibold leading-snug mb-2">
+              {post.frontmatter.title}
+            </h1>
+            <div className="text-zinc-400 dark:text-zinc-500 text-sm">
+              {formatDate(post.frontmatter.date)}
+            </div>
           </div>
-        </div>
-        <div className="prose text-[14px] leading-relaxed">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
-        </div>
-        <div className="mt-12 pt-6 border-t border-zinc-200 dark:border-zinc-800">
-          <Link href="/" className="text-zinc-400 hover:text-foreground transition-colors text-sm">
-            ← Back
-          </Link>
-        </div>
-      </article>
-    </div>
+          <div className="prose text-[14px] leading-relaxed">
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </div>
+          <div className="mt-12 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+            <Link href="/" className="text-zinc-400 hover:text-foreground transition-colors text-sm">
+              ← Back
+            </Link>
+          </div>
+        </article>
+      </div>
+      <Footer />
+    </>
   )
 }
 

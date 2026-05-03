@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      <div className="w-full max-w-2xl mx-auto px-4 py-12">
+      <div className="w-full max-w-xl mx-auto px-4 py-12">
         <TabsClient writings={writings} projects={projects} />
       </div>
     </div>

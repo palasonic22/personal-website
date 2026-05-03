@@ -77,7 +77,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} font-sans antialiased min-h-screen flex flex-col text-[14px]`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
         </ThemeProvider>
       </body>

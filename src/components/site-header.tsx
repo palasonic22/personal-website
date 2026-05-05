@@ -14,7 +14,7 @@ const navItems = [
 
 type TabId = (typeof navItems)[number]['id']
 
-export function SiteHeader() {
+export function SiteHeader({ onContactClick }: { onContactClick?: () => void }) {
   return (
     <header className="w-full sticky top-0 z-50 bg-background py-6 flex items-center">
       <div className="flex items-center gap-[10px]">
@@ -34,12 +34,12 @@ export function SiteHeader() {
       <div className="flex-1" />
       <div className="flex items-center gap-3">
         <ThemeToggle />
-        <Link
-          href="mailto:hello@ezekiellee.com"
+        <button
+          onClick={onContactClick}
           className="hit-area hit-area-3 px-4 py-1.5 border border-zinc-300 dark:border-zinc-600 rounded-full text-[13px] hover:bg-foreground hover:text-background transition-all duration-300"
         >
           Get in touch
-        </Link>
+        </button>
       </div>
     </header>
   )

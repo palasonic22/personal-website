@@ -13,11 +13,11 @@ export function TabsClient({ writings, projects }: { writings: Frontmatter[]; pr
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader onContactClick={() => setActiveTab('connect')} />
       <Intro />
       <TabNav activeTab={activeTab} onTabChange={setActiveTab} />
       <div className="min-h-[300px]">
-        {activeTab === 'about' && <AboutTab projects={projects} />}
+        {activeTab === 'about' && <AboutTab />}
         {activeTab === 'writing' && <WritingTab writings={writings} />}
         {activeTab === 'favorites' && <FavoritesTab />}
         {activeTab === 'connect' && <ConnectTab />}
@@ -27,7 +27,7 @@ export function TabsClient({ writings, projects }: { writings: Frontmatter[]; pr
   )
 }
 
-function AboutTab({ projects }: { projects: Frontmatter[] }) {
+function AboutTab() {
   return (
     <div className="space-y-6">
       <Image
@@ -37,10 +37,41 @@ function AboutTab({ projects }: { projects: Frontmatter[] }) {
         height={150}
         className="w-full h-[150px] object-cover object-bottom rounded-lg"
       />
-      <section>
-        <p className="text-[14px] leading-relaxed mb-4">
-          I build and ship products from zero. Spent 6 years in crypto and startups across payments, growth, and on-chain.
-          Currently at Bitget Wallet. Now building small tools with AI, end-to-end. Interested in inevitable products.
+      <section className="space-y-4">
+        <p className="text-[14px] leading-relaxed">
+          Hey, Ezekiel here from Singapore.
+        </p>
+        <p className="text-[14px] leading-relaxed">
+          I like taking messy ideas and turning them into real things people use.
+        </p>
+        <p className="text-[14px] leading-relaxed">
+          I’ve spent the last 6 years in crypto and startups, working across product and growth.
+          Most of it was chaotic, with unclear problems, fast timelines, and needing to just ship
+          something that works.
+        </p>
+        <p className="text-[14px] leading-relaxed">
+          Right now I’m at Bitget Wallet, working on crypto payments. I care a lot about what makes
+          something click — and how it actually spreads.
+        </p>
+        <p className="text-[14px] leading-relaxed">
+          Before that, I was building trading products on Solana, focused on NFTs and memecoins.
+          It was a crash course in distribution — capturing attention, driving user behavior, and
+          turning that into real outcomes, including millions in trading fees and capital raised.
+        </p>
+        <p className="text-[14px] leading-relaxed">
+          Over time, I realised I’m most drawn to 0→1 work — getting close to the problem, moving
+          fast, and doing whatever it takes to get something out.
+        </p>
+        <p className="text-[14px] leading-relaxed">
+          Lately I’ve been building smaller tools with AI, end-to-end. Mostly to help friends and
+          businesses save time and improve workflows.
+        </p>
+        <p className="text-[14px] leading-relaxed">
+          I care about simple things that work.
+        </p>
+        <p className="text-[14px] leading-relaxed">
+          Still figuring things out, but mostly just building. Outside of work, I’m with my wife,
+          usually thinking about the next football game or when I can get out to surf.
         </p>
       </section>
 
@@ -48,41 +79,39 @@ function AboutTab({ projects }: { projects: Frontmatter[] }) {
         <h2 className="text-xs uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
           Timeline
         </h2>
-        <div className="space-y-3 mt-4">
-          <div className="flex items-baseline justify-between">
-            <span>Bitget Wallet — payments and growth</span>
-            <span className="text-zinc-400 dark:text-zinc-500 text-sm shrink-0 ml-4">2024–2026</span>
+        <div className="space-y-6 mt-4">
+          <div>
+            <div className="flex items-baseline justify-between mb-1">
+              <span className="text-zinc-400 dark:text-zinc-500 text-sm">2024 — Present</span>
+            </div>
+            <div className="font-medium">Bitget Wallet</div>
+            <div className="text-zinc-400 dark:text-zinc-500 text-sm mb-2">Product, Growth &amp; Operations</div>
+            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              Building and scaling 0→1 consumer crypto products to millions of users, across payments and user-facing systems.
+            </p>
           </div>
-          <div className="flex items-baseline justify-between">
-            <span>Web3 / Solana — building on-chain</span>
-            <span className="text-zinc-400 dark:text-zinc-500 text-sm shrink-0 ml-4">2022–2024</span>
+          <div>
+            <div className="flex items-baseline justify-between mb-1">
+              <span className="text-zinc-400 dark:text-zinc-500 text-sm">2022 — 2024</span>
+            </div>
+            <div className="font-medium">Web3.0 Projects on Solana</div>
+            <div className="text-zinc-400 dark:text-zinc-500 text-sm mb-2">Product Builder</div>
+            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              Built and shipped on-chain products across NFTs and trading, focusing on user behavior, onboarding, and growth systems.
+            </p>
           </div>
-          <div className="flex items-baseline justify-between">
-            <span>Independent builder — small products, writing, AI</span>
-            <span className="text-zinc-400 dark:text-zinc-500 text-sm shrink-0 ml-4">Now</span>
+          <div>
+            <div className="flex items-baseline justify-between mb-1">
+              <span className="text-zinc-400 dark:text-zinc-500 text-sm">2021 — 2022</span>
+            </div>
+            <div className="font-medium">Prop.ly</div>
+            <div className="text-zinc-400 dark:text-zinc-500 text-sm mb-2">Product Manager</div>
+            <p className="text-[14px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              Worked on product and user experience in a real estate technology startup.
+            </p>
           </div>
         </div>
       </section>
-
-      {projects.length > 0 && (
-        <section>
-          <h2 className="text-xs uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
-            Things I've built
-          </h2>
-          <div className="space-y-4 mt-4">
-            {projects.map((project) => (
-              <div key={project.slug}>
-                <a href="#" className="font-medium hover:underline underline-offset-4">
-                  {project.title}
-                </a>
-                <p className="text-zinc-500 dark:text-zinc-400 mt-1">
-                  {project.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   )
 }
@@ -97,25 +126,28 @@ function WritingTab({ writings }: { writings: Frontmatter[] }) {
         height={150}
         className="w-full h-[150px] object-cover object-top rounded-lg"
       />
-      <div className="space-y-3">
-      {writings.map((post) => (
-        <a
-          key={post.slug}
-          href={`/writing/${post.slug}`}
-          className="flex items-baseline justify-between group"
-        >
-          <span className="group-hover:underline underline-offset-4">
-            {post.title}
-          </span>
-          <span className="text-zinc-400 dark:text-zinc-500 text-sm shrink-0 ml-4">
-            {formatDate(post.date)}
-          </span>
-        </a>
-      ))}
-      {writings.length === 0 && (
-        <p className="text-zinc-400 dark:text-zinc-500">No writing yet.</p>
+      {writings.length > 0 ? (
+        <div className="space-y-3">
+          {writings.map((post) => (
+            <a
+              key={post.slug}
+              href={`/writing/${post.slug}`}
+              className="flex items-baseline justify-between group"
+            >
+              <span className="group-hover:underline underline-offset-4">
+                {post.title}
+              </span>
+              <span className="text-zinc-400 dark:text-zinc-500 text-sm shrink-0 ml-4">
+                {formatDate(post.date)}
+              </span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p className="text-zinc-400 dark:text-zinc-500 text-[14px]">
+          Coming soon.
+        </p>
       )}
-      </div>
     </div>
   )
 }
@@ -195,8 +227,9 @@ function ConnectTab() {
         className="w-full h-[150px] object-cover object-top rounded-lg"
       />
       <p className="text-[14px] leading-relaxed">
-        I'm always open to interesting conversations. Reach out if you want to talk products,
-        building, or just say hi.
+        I'm always open to interesting conversations. Reach out if you want to talk AI, products,
+        building, or startups. I also play 11-a-side football around Singapore. If you have a game,
+        feel free to reach out.
       </p>
       <div className="flex flex-col gap-3">
         {connectLinks.map((link) => (
@@ -217,9 +250,8 @@ function ConnectTab() {
 }
 
 const connectLinks = [
-  { label: 'Email', href: 'mailto:hello@ezekiellee.com', external: false },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/ezekiel-lee', external: true },
-  { label: 'X / Twitter', href: 'https://x.com/ezekiel_lee', external: true },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/ezekiellyf', external: true },
+  { label: 'Twitter', href: 'https://x.com/send_eze', external: true },
 ]
 
 function ExternalArrow() {

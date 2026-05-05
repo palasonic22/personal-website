@@ -93,8 +93,7 @@ export function Intro() {
           Me in 10 seconds
         </h2>
         <p className="text-[14px] leading-relaxed">
-          I build and ship products from zero. Spent 6 years in crypto and startups across payments, growth, and on-chain.
-          Currently at Bitget Wallet. Now building small tools with AI, end-to-end. Interested in inevitable products.
+          I build and ship products from zero. I've spent 6 years in crypto and startups across payments, growth, and on-chain. Currently at Bitget Wallet. After hours, I build small tools with AI to help businesses improve workflows, end-to-end.
         </p>
       </section>
 

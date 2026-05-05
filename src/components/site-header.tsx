@@ -46,7 +46,7 @@ export function SiteHeader() {
 }
 
 function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => setMounted(true), [])
@@ -93,18 +93,17 @@ export function Intro() {
           Me in 10 seconds
         </h2>
         <p className="text-[14px] leading-relaxed">
-          I build and ship products from zero. Spent the last 6 years in crypto and startups across product and growth.
-          Now building small tools and AI workflows to help companies move faster. Currently living in Singapore.
+          I build and ship products from zero. Spent 6 years in crypto and startups across payments, growth, and on-chain.
+          Currently at Bitget Wallet. Now building small tools with AI, end-to-end. Interested in inevitable products.
         </p>
       </section>
 
       <section>
         <h2 className="text-xs uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2">
-          Current AI of choice
+          My Current AI Stack
         </h2>
         <p className="text-[14px] leading-relaxed">
-          Next.js + TypeScript + Tailwind: For building.
-          Sonnet 4.6: For all things writing.
+          I go from idea to shipped product using <a href="https://openai.com/index/introducing-gpt-5-5/" target="_blank" rel="noopener noreferrer" className="hover:underline">GPT-5.5</a>, <a href="https://openai.com/index/introducing-chatgpt-images-2-0/" target="_blank" rel="noopener noreferrer" className="hover:underline">Images 2.0</a>, and <a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener noreferrer" className="hover:underline">Claude Code</a> with <a href="https://qwen.ai/blog?id=qwen3.6" target="_blank" rel="noopener noreferrer" className="hover:underline">Qwen</a>. For writing and thinking, I use <a href="https://www.anthropic.com/claude/sonnet" target="_blank" rel="noopener noreferrer" className="hover:underline">Sonnet</a>.
         </p>
       </section>
     </div>
@@ -119,11 +118,10 @@ export function TabNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChan
           <button
             key={item.id}
             onClick={() => onTabChange(item.id)}
-            className={`hit-area hit-area-3 pb-2 text-sm transition-colors duration-200 ${
-              activeTab === item.id
-                ? 'text-foreground border-b-[3px] border-foreground -mb-px'
-                : 'text-zinc-400 dark:text-zinc-500 hover:text-foreground'
-            }`}
+            className={`hit-area hit-area-3 pb-2 text-sm transition-colors duration-200 ${activeTab === item.id
+              ? 'text-foreground border-b-[3px] border-foreground -mb-px'
+              : 'text-zinc-400 dark:text-zinc-500 hover:text-foreground'
+              }`}
           >
             {item.label}
           </button>

@@ -41,7 +41,7 @@ export function Footer() {
 
         {/* Right: Time + Tagline */}
         <div className="text-[13px]" style={{ color: 'var(--footer-text)' }}>
-          {time} - All we have is now.
+          SGT {time} - All we have is now.
         </div>
       </div>
     </footer>
